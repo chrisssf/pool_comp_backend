@@ -1,5 +1,7 @@
 package com.chrisssf.poolcomp.poolcomp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -17,6 +19,21 @@ public class Comp {
     @Column(name="date")
     private LocalDate date;
 
+    @JsonIgnoreProperties(value="comps")
+    @ManyToMany
+    @JoinTable(
+            name="players_comps",
+            joinColumns = {@JoinColumn(
+                    name="comp_id",
+                    nullable = false,
+                    updatable = false
+            )},
+            inverseJoinColumns = { @JoinColumn(
+                    name="player_id",
+                    nullable = false,
+                    updatable = false
+            )}
+    )
     @Column(name="players")
     private List<Player> players;
 

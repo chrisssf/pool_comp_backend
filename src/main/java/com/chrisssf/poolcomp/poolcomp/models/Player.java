@@ -1,5 +1,7 @@
 package com.chrisssf.poolcomp.poolcomp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,24 @@ public class Player {
     @Column(name="knockout_matches_lost")
     private Integer knockoutMatchesLost;
 
+    @JsonIgnoreProperties(value="players")
+    @ManyToMany
+    @JoinTable(
+            name="players_comps",
+            joinColumns = {@JoinColumn(
+                    name="player_id",
+                    nullable = false,
+                    updatable = false
+            )},
+            inverseJoinColumns = { @JoinColumn(
+                    name="comp_id",
+                    nullable = false,
+                    updatable = false
+            )}
+    )
+    @Column(name="comps")
+    private List<Comp> comps;
+
     @Column(name="winner")
     private List<Comp> winner;
 
@@ -65,6 +85,7 @@ public class Player {
         this.racksLost = 0;
         this.knockoutMatchesWon = 0;
         this.knockoutMatchesLost = 0;
+        this.comps = new ArrayList<Comp>();
         this.winner = new ArrayList<Comp>();
         this.runnerUp = new ArrayList<Comp>();
         this.semi = new ArrayList<Comp>();
@@ -146,6 +167,14 @@ public class Player {
 
     public void setKnockoutMatchesLost(Integer knockoutMatchesLost) {
         this.knockoutMatchesLost = knockoutMatchesLost;
+    }
+
+    public List<Comp> getComps() {
+        return comps;
+    }
+
+    public void setComps(List<Comp> comps) {
+        this.comps = comps;
     }
 
     public List<Comp> getWinner() {
