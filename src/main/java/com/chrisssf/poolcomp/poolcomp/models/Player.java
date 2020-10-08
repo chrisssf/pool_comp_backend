@@ -12,7 +12,6 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
     private Long id;
 
     @Column(name="first_name")
@@ -54,26 +53,41 @@ public class Player {
                     updatable = false
             )}
     )
-    @Column(name="comps")
+//    @Column(name="comps")
     private List<Comp> comps;
 
-    @Column(name="winner")
-    private List<Comp> winner;
-
-    @Column(name="runner_up")
-    private List<Comp> runnerUp;
-
-    @Column(name="semi")
-    private List<Comp> semi;
-
-    @Column(name="quarter")
-    private List<Comp> quarter;
-
-    @Column(name="last_16")
-    private List<Comp> last16;
-
-    @Column(name="group")
-    private List<Comp> group;
+//    @JsonIgnoreProperties(value="players")
+//    @ManyToMany
+//    @JoinTable(
+//            name="players_wins",
+//            joinColumns = {@JoinColumn(
+//                    name="player_id",
+//                    nullable = false,
+//                    updatable = false
+//            )},
+//            inverseJoinColumns = { @JoinColumn(
+//                    name="comp_id",
+//                    nullable = false,
+//                    updatable = false
+//            )}
+//    )
+//    @Column(name="winner")
+//    private List<Comp> winner;
+//
+//    @Column(name="runner_up")
+//    private List<Comp> runnerUp;
+//
+//    @Column(name="semi")
+//    private List<Comp> semi;
+//
+//    @Column(name="quarter")
+//    private List<Comp> quarter;
+//
+//    @Column(name="last_16")
+//    private List<Comp> last16;
+//
+//    @Column(name="group")
+//    private List<Comp> group;
 
 
     public Player(String firstName, String lastName, String nickName) {
@@ -86,12 +100,12 @@ public class Player {
         this.knockoutMatchesWon = 0;
         this.knockoutMatchesLost = 0;
         this.comps = new ArrayList<Comp>();
-        this.winner = new ArrayList<Comp>();
-        this.runnerUp = new ArrayList<Comp>();
-        this.semi = new ArrayList<Comp>();
-        this.quarter = new ArrayList<Comp>();
-        this.last16 = new ArrayList<Comp>();
-        this.group = new ArrayList<Comp>();
+//        this.winner = new ArrayList<Comp>();
+//        this.runnerUp = new ArrayList<Comp>();
+//        this.semi = new ArrayList<Comp>();
+//        this.quarter = new ArrayList<Comp>();
+//        this.last16 = new ArrayList<Comp>();
+//        this.group = new ArrayList<Comp>();
     }
 
     public Player() {
@@ -176,52 +190,52 @@ public class Player {
     public void setComps(List<Comp> comps) {
         this.comps = comps;
     }
-
-    public List<Comp> getWinner() {
-        return winner;
-    }
-
-    public void setWinner(List<Comp> winner) {
-        this.winner = winner;
-    }
-
-    public List<Comp> getRunnerUp() {
-        return runnerUp;
-    }
-
-    public void setRunnerUp(List<Comp> runnerUp) {
-        this.runnerUp = runnerUp;
-    }
-
-    public List<Comp> getSemi() {
-        return semi;
-    }
-
-    public void setSemi(List<Comp> semi) {
-        this.semi = semi;
-    }
-
-    public List<Comp> getQuarter() {
-        return quarter;
-    }
-
-    public void setQuarter(List<Comp> quarter) {
-        this.quarter = quarter;
-    }
-
-    public List<Comp> getLast16() {
-        return last16;
-    }
-
-    public void setLast16(List<Comp> last16) {
-        this.last16 = last16;
-    }
-
-    public List<Comp> getGroup() {
-        return group;
-    }
-
-    public void setGroup(List<Comp> group) {
-        this.group = group;
-    }
+//
+//    public List<Comp> getWinner() {
+//        return winner;
+//    }
+//
+//    public void setWinner(List<Comp> winner) {
+//        this.winner = winner;
+//    }
+//
+//    public List<Comp> getRunnerUp() {
+//        return runnerUp;
+//    }
+//
+//    public void setRunnerUp(List<Comp> runnerUp) {
+//        this.runnerUp = runnerUp;
+//    }
+//
+//    public List<Comp> getSemi() {
+//        return semi;
+//    }
+//
+//    public void setSemi(List<Comp> semi) {
+//        this.semi = semi;
+//    }
+//
+//    public List<Comp> getQuarter() {
+//        return quarter;
+//    }
+//
+//    public void setQuarter(List<Comp> quarter) {
+//        this.quarter = quarter;
+//    }
+//
+//    public List<Comp> getLast16() {
+//        return last16;
+//    }
+//
+//    public void setLast16(List<Comp> last16) {
+//        this.last16 = last16;
+//    }
+//
+//    public List<Comp> getGroup() {
+//        return group;
+//    }
+//
+//    public void setGroup(List<Comp> group) {
+//        this.group = group;
+//    }
 }
